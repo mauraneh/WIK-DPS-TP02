@@ -1,0 +1,15 @@
+FROM rust:slim
+
+ENV USER mon_user
+
+WORKDIR /app
+
+COPY . .
+
+RUN cargo build --release
+
+USER $USER
+
+EXPOSE 8080
+
+CMD ["./target/release/wik-dps-tp02"]
